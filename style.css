@@ -1,0 +1,17 @@
+@import 'https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap';
+
+*{
+    margin: 10px;
+}
+
+#titulo{
+    font-family: 'Mukta', sans-serif;
+    color:rgb(189, 150, 42);
+    width: 450px; 
+    height: 100px;
+    border: 1px solid rgb(70, 52, 30);
+    margin: 10px;
+    padding: 1% 2%;
+    box-sizing: border-box;
+    background-color: rgb(70, 52, 30);
+}
