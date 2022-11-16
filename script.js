@@ -82,17 +82,17 @@ function showOrHide(){
 
 //EVENTOS:
 
-salarioBruto.addEventListener("input", (e) => {
+salarioBruto.addEventListener("input", (e) => {               //INPUTS VÁLIDOS
     const updatedValue = validDigits(e.target.value);
     e.target.value = updatedValue;
 })
 
-clearBtn.addEventListener("click", (e) => {
+clearBtn.addEventListener("click", (e) => {                   //BOTÃO DE LIMPAR
     e.preventDefault();
     clearInputs();
 })
 
-calcBtn.addEventListener("click", (e) => {
+calcBtn.addEventListener("click", (e) => {                    //BOTÃO DE CALCULAR
     e.preventDefault();
     const salarioBruto = +salarioBrutoInput.value.replace(",",".")
 
@@ -103,7 +103,7 @@ calcBtn.addEventListener("click", (e) => {
     showOrHide();
 })
 
-backBtn.addEventListener("click", () => {
+backBtn.addEventListener("click", () => {                    //BOTÃO DE VOLTAR À TELA INICIAL
     clearInputs();
     showOrHide();
 })
