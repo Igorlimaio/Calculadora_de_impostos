@@ -8,21 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="titulo">
-        <h1>Calculadora de INSS e IRPF</h1>
+    <div class="container">
+        <div id="calc-container">
+            <h2>Calculadora dos Impostos INSS e IRPF</h2>
+            <form id="sal-form">
+                <div class="form-inputs">
+                    <div class="form-control">
+                        <label for="salarioBruto">Salário Bruto:</label>
+                        <input type="text" id="salarioBruto" name="salarioBruto" placeholder="Exemplo: 5000,75"> 
+                    </div>
+                </div>
+                <div class="action-control">
+                    <button id="calc-btn"> Calcular </button>
+                    <button id="clear-btn">Limpar</button>
+                </div>
+            </form>
+        </div>
+        <div id="result-container" class="hide">
+            <p id="salL">Seu salário líquido: R$ </p>
+            <h3>Confira seus descontos: </h3>
+            <p id="inss">INSS: R$ </p>
+            <p id="irpf">IRPF: R$ </p>
+            <button id="back-btn">Voltar</button>
+        </div>
     </div>
-    <form>
-        <label for="salarioBruto">Salário Bruto:</label>
-        <input type="number" id="salarioBruto" name="salarioBruto"> 
-    </form>
 
     <script src="script.js"></script>
-
-    <button onclick="calcularImpostos()"> Calcular Impostos </button>
-
-    <p id="salL">Salário Líquido: </p>
-    <p id="inss">Descontos INSS: </p>
-    <p id="irpf">Descontos IRPF: </p>
 
 </body>
 </html>

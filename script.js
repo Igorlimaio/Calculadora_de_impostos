@@ -1,17 +1,24 @@
+//ELEMENTOS:
 
-function calcularImpostos(){
-    
-    let salarioBruto = document.getElementById("salarioBruto").value    
+const calcBtn = document.querySelector("#calc-btn");
+const clearBtn = document.querySelector("#clear-btn");
+const salarioBrutoInput = document.getElementById("salarioBruto");
+const backBtn = document.querySelector("#back-btn");
+const calcContainer = document.querySelector("#calc-container");
+const resultContainer = document.querySelector("#result-container");
+
+
+//FUNÇÕES PARA CALCULAR:
+
+function calcularImpostos(salarioBruto){
     let descontoINSS = inss(salarioBruto);
     let salarioBase = salarioBruto - descontoINSS;
     let descontoIRPF = irpf(salarioBase);
     let salarioLiquido = salarioBase - descontoIRPF;
     
-    document.getElementById("inss").innerHTML = "Descontos INSS: " + descontoINSS.toFixed(2);
-    document.getElementById("irpf").innerHTML = "Descontos IRPF: " + descontoIRPF.toFixed(2);
-    document.getElementById("salL").innerHTML = "Salário Líquido: " + salarioLiquido.toFixed(2);
-    
-
+    document.getElementById("inss").innerHTML = "INSS: R$ " + descontoINSS.toFixed(2);
+    document.getElementById("irpf").innerHTML = "IRPF: R$ " + descontoIRPF.toFixed(2);
+    document.getElementById("salL").innerHTML = "Seu salário líquido: R$ " + salarioLiquido.toFixed(2);
 }
 
 function inss(salarioBruto){                    //função que calcula o desconto do inss
@@ -34,8 +41,6 @@ function inss(salarioBruto){                    //função que calcula o descont
     return inss;
 }
 
-
-
 function irpf(salarioBase){                 //função que calcula o desconto do irpf
     let irpf;
     if (salarioBase <= 1903.98){            //irpf para o salário entre os determinados valores abaixo
@@ -55,3 +60,50 @@ function irpf(salarioBase){                 //função que calcula o desconto do
     }
     return irpf;
 }
+
+//FUNÇÃO PARA LIMPAR:
+
+function clearInputs(){
+    salarioBrutoInput.value = ""
+}
+
+//FUNÇÃO PARA INPUT VÁLIDO:
+
+function validDigits(text){
+    return text.replace(/[^0-9,]/g, "")
+}
+
+//FUNÇÃO PARA ALTERAR ENTRE RESULTADO E CALCULADORA:
+
+function showOrHide(){
+    calcContainer.classList.toggle("hide");
+    resultContainer.classList.toggle("hide");
+}
+
+//EVENTOS:
+
+salarioBruto.addEventListener("input", (e) => {
+    const updatedValue = validDigits(e.target.value);
+    e.target.value = updatedValue;
+})
+
+clearBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    clearInputs();
+})
+
+calcBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const salarioBruto = +salarioBrutoInput.value.replace(",",".")
+
+    if(!salarioBruto) return;
+
+    else calcularImpostos(salarioBruto);
+
+    showOrHide();
+})
+
+backBtn.addEventListener("click", () => {
+    clearInputs();
+    showOrHide();
+})
