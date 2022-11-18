@@ -27,13 +27,13 @@ function inss(salarioBruto){                    //função que calcula o descont
         inss = salarioBruto*0.075;
     }
     else if(salarioBruto>=1212.01 && salarioBruto<=2427.35){
-        inss = salarioBruto*0.09;
+        inss = (salarioBruto-1212)*0.09 + 1212*0.075;
     }
     else if(salarioBruto>=2427.36 && salarioBruto<=3641.03){
-        inss = salarioBruto*0.12;
+        inss = (salarioBruto-2427.35)*0.12; + 1212*0.075 + (2427.35-1212)*0.09;
     }
     else if(salarioBruto>=3641.04){
-        inss = salarioBruto*0.14;
+        inss = (salarioBruto-3641.03)*0.14 + 1212*0.075 + (2427.35-1212)*0.09 + (3641.03-2427.35)*0.12;
         if(inss>828.39){
             inss = 828.39;
         }
