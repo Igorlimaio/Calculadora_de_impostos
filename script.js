@@ -7,7 +7,6 @@ const backBtn = document.querySelector("#back-btn");
 const calcContainer = document.querySelector("#calc-container");
 const resultContainer = document.querySelector("#result-container");
 
-
 //FUNÇÕES PARA CALCULAR:
 
 function calcularImpostos(salarioBruto){
@@ -30,7 +29,7 @@ function inss(salarioBruto){                    //função que calcula o descont
         inss = (salarioBruto-1212)*0.09 + 1212*0.075;
     }
     else if(salarioBruto>=2427.36 && salarioBruto<=3641.03){
-        inss = (salarioBruto-2427.35)*0.12; + 1212*0.075 + (2427.35-1212)*0.09;
+        inss = (salarioBruto-2427.35)*0.12 + 1212*0.075 + (2427.35-1212)*0.09;
     }
     else if(salarioBruto>=3641.04){
         inss = (salarioBruto-3641.03)*0.14 + 1212*0.075 + (2427.35-1212)*0.09 + (3641.03-2427.35)*0.12;
